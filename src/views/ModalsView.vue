@@ -2,9 +2,9 @@
   <div class="modals">
     <h1>Modals</h1>
     <button @click="showModal = true">Show Modal</button>
-    <Modal v-if="showModal">
+    <Modal v-if="showModal" title="My new Title (via props)">
       <!-- <template v-slot:title>My new Title </template> -->
-      <template #title>My new Title </template>
+      <!-- <template #title>My new Title </template>  learn slots-->
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
         optio, dolores laudantium quidem in aliquid itaque earum nostrum, ipsa

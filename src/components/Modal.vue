@@ -1,9 +1,11 @@
 <template>
   <Teleport to=".modals-containers">
     <div class="modal">
-      <h1>
+      <!-- <h1>
         <slot name="title" />
-      </h1>
+      </h1> -->
+      <h1>{{ title }}</h1>
+      <!-- <h1>{{ props.title }}</h1> -->
       <slot></slot>
       <!-- <pre>{{ $slots.title() }}</pre> options api vue -->
       <button>Hide Modal</button>
@@ -15,7 +17,29 @@
 /* import { useSlots } from 'vue';
 const slots = useSlots()
 console.log(slots.title()) */
+
+// props
+const props = defineProps({
+  title: {
+    type: String,
+    default: "No title specified",
+  },
+});
+// console.log(title); ==> error
+// console.log(props.title) => not error
 </script>
+
+<!-- option api -->
+<!-- <script>
+export default {
+  props: {
+    title: {
+      type: String,
+      default: "No title specified",
+    },
+  },
+};
+</script> -->
 
 <style scoped>
 .modal {
