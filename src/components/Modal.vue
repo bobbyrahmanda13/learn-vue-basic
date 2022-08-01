@@ -10,7 +10,7 @@
       <!-- <pre>{{ $slots.title() }}</pre> options api vue -->
 
       <!-- <button @click="$emit('hideModal')">Hide Modal</button> -->
-      <button @click="handleButtonClick">Hide Modal</button>
+      <button @click="$emit('update:modelValue', false)">Hide Modal</button>
     </div>
   </Teleport>
 </template>
@@ -34,15 +34,14 @@ const props = defineProps({
 // console.log(props.title) => not error
 
 // emits
-const emit = defineEmits(["hideModal"]);
+// const emit = defineEmits(["update:modelValue"]);
 
 // this.$emit('hideModal') ==> option api
 
 // handle button click setup using method vuejs
-const handleButtonClick = () => {
-  // console.log('handle button click')
-  emit("hideModal");
-};
+/* const handleButtonClick = () => {
+  emit("update:modelValue", false);
+}; */
 </script>
 
 <!-- option api -->

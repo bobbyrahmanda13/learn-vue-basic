@@ -2,8 +2,7 @@
   <div class="modals">
     <h1>Modals</h1>
     <button @click="showModal = true">Show Modal</button>
-    <Modal v-model="showModal" title="My new Title (via props)" @hideModal="showModal =
-    false">
+    <Modal v-model="showModal" title="My new Title (via props)">
       <!-- <template v-slot:title>My new Title </template> -->
       <!-- <template #title>My new Title </template>  learn slots-->
       <p>
