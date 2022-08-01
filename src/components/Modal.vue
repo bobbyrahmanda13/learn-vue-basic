@@ -1,6 +1,6 @@
 <template>
   <Teleport to=".modals-containers">
-    <div class="modal">
+    <div class="modal" v-if="modelValue">
       <!-- <h1>
         <slot name="title" />
       </h1> -->
@@ -22,6 +22,10 @@
 
 // props
 const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    default: false,
+  },
   title: {
     type: String,
     default: "No title specified",
@@ -37,8 +41,8 @@ const emit = defineEmits(["hideModal"]);
 // handle button click setup using method vuejs
 const handleButtonClick = () => {
   // console.log('handle button click')
-  emit('hideModal')
-}
+  emit("hideModal");
+};
 </script>
 
 <!-- option api -->
