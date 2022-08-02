@@ -1,13 +1,15 @@
 <script setup>
 //import
 import { RouterLink, RouterView } from "vue-router";
-import { reactive } from "vue";
+import { reactive, provide } from "vue";
 
 // user data
 const userData = reactive({
   name: "Rahman",
   username: "rahmantesting",
 });
+provide('userData', userData)
+
 </script>
 <template>
   <div class="user-data">{{ userData.name }} @{{ userData.username }}</div>
@@ -21,7 +23,8 @@ const userData = reactive({
       <component :is="Component" />
     </keep-alive>
   </router-view> -->
-  <RouterView :userData="userData" />
+  <!-- <RouterView :userData="userData" /> -->
+  <RouterView />
 </template>
 
 <style>

@@ -11,6 +11,7 @@
 
       <!-- <button @click="$emit('hideModal')">Hide Modal</button> -->
       <button @click="$emit('update:modelValue', false)">Hide Modal</button>
+      <!-- <div>Username is: {{ userData.username }}</div> -->
       <div>Username is: {{ userData.username }}</div>
     </div>
   </Teleport>
@@ -20,6 +21,8 @@
 /* import {useSlots} from 'vue';
     const slots = useSlots()
     console.log(slots.title()) */
+
+import { inject } from "vue";
 
 // props
 const props = defineProps({
@@ -31,11 +34,14 @@ const props = defineProps({
     type: String,
     default: "No title specified",
   },
-  userData: {
+  /* userData: {
     type: Object,
-  },
+  }, */
 }); // console.log(title);==> error
 // console.log(props.title) => not error
+
+// user data
+const userData = inject("userData");
 
 // emits
 // const emit = defineEmits(["update:modelValue"]);
