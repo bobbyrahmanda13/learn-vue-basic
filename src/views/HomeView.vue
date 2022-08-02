@@ -42,71 +42,24 @@ export default {
 // import { reactive, computed } from 'vue'
 // import { reactive, computed, watch, onMounted, onBeforeMount, onBeforeUnmount, onUnmounted, onActivated, onDeactivated } from 'vue'
 // import { reactive, computed, watch, onBeforeUpdate, onUpdated } from 'vue'
-import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue'
+import { ref, onMounted } from 'vue'
 // import vAutofocus
 import { vAutofocus } from '@/directives/vAutofocus'
+import { useCounter } from "@/use/useCounter";
 
 /* app title */
 // non reactive data 
 const appTitle = 'My Amazing Counter App'
-
-onMounted(() => {
-  console.log('Do stuff related to App')
-})
-
-/* counter */
-// const counter = ref(0), counterTitle = ref('My Counter')
-const counterData = reactive({
-  count: 0,
-  title: 'My Counter'
-})
-
-watch(() => counterData.count, (newCount) => {
-  // console.log('newCount', newCount)
-  if (newCount === 20) alert('Way to go! You made it to 20!!')
-})
-
-const oddOrEven = computed(() => {
-  if (counterData.count % 2 === 0) return 'even'
-  return 'odd'
-})
-/* const increaseCounter = amount => {
-  // console.log(amount)
-  // counter.value++
-  // counterData.count++
-  // counterData.count = counterData.count + amount => counterData.count += amount 
-  counterData.count += amount
-} */
-
-/* const increaseCounter = (amount, e) => {
-  console.log(e)
-  counterData.count += amount */
-/* this.$nextTick(() => {  //=> nextTick untuk option api 
-  // do something after he dom has updated
-})
-nextTick(() => {
-  console.log('do something when counter has updated in the dom')
-})
-} */
-// nextTick is async function 
-const increaseCounter = async (amount) => {
-  // console.log(e)
-  counterData.count += amount
-  await nextTick()
-  console.log('do something when counter has updated in the dom')
-}
-const decreaseCounter = amount => {
-  // counter.value--
-  // counterData.count--
-  counterData.count -= amount
-}
-
 const appTitleRef = ref(null)
 onMounted(() => {
   // console.log(appTitleRef.value)
   // console.log('Do stuff related to Counter')
   console.log(`The App title is ${appTitleRef.value.offsetWidth}px wide!"`)
 })
+
+/* counter */
+const { counterData, addOrEven, increaseCounter, decreaseCounter } = useCounter()
+
 
 // life cycle hooks
 /* onBeforeMount(() => {
@@ -211,7 +164,7 @@ export default {
       <button @click="increaseCounter(2)" class="btn">++</button>
     </div>
 
-    <p>This counter is {{ oddOrEven }}</p>
+    <p>This counter is {{ addOrEven }}</p>
 
     <div class="edit">
       <h4>Edit counter title:</h4>
