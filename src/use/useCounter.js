@@ -1,11 +1,17 @@
 import { reactive, watch, computed, onMounted, nextTick } from "vue";
 
+const counterData = reactive({
+  count: 0,
+  title: "My Counter",
+});
+
 export function useCounter() {
   // const counter = ref(0), counterTitle = ref('My Counter')
-  const counterData = reactive({
+  // local counter
+  /* const counterData = reactive({
     count: 0,
     title: "My Counter",
-  });
+  }); */
 
   watch(
     () => counterData.count,
@@ -15,7 +21,7 @@ export function useCounter() {
     }
   );
 
-  const addOrEven = computed(() => {
+  const oddOrEven = computed(() => {
     if (counterData.count % 2 === 0) return "even";
     return "odd";
   });
@@ -52,5 +58,5 @@ nextTick(() => {
   onMounted(() => {
     console.log("Do stuff related to App");
   });
-  return { counterData, increaseCounter, decreaseCounter, addOrEven };
+  return { counterData, increaseCounter, decreaseCounter, oddOrEven };
 }

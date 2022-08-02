@@ -58,7 +58,7 @@ onMounted(() => {
 })
 
 /* counter */
-const { counterData, addOrEven, increaseCounter, decreaseCounter } = useCounter()
+const { counterData, oddOrEven, increaseCounter, decreaseCounter } = useCounter()
 
 
 // life cycle hooks
@@ -164,7 +164,7 @@ export default {
       <button @click="increaseCounter(2)" class="btn">++</button>
     </div>
 
-    <p>This counter is {{ addOrEven }}</p>
+    <p>This counter is {{ oddOrEven }}</p>
 
     <div class="edit">
       <h4>Edit counter title:</h4>
