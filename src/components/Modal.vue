@@ -11,6 +11,7 @@
 
       <!-- <button @click="$emit('hideModal')">Hide Modal</button> -->
       <button @click="$emit('update:modelValue', false)">Hide Modal</button>
+      <div>Username is: {{ userData.username }}</div>
     </div>
   </Teleport>
 </template>
@@ -29,6 +30,9 @@ const props = defineProps({
   title: {
     type: String,
     default: "No title specified",
+  },
+  userData: {
+    type: Object,
   },
 }); // console.log(title);==> error
 // console.log(props.title) => not error

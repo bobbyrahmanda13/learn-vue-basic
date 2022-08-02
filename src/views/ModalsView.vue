@@ -17,7 +17,7 @@
       </p>
     </Modal> -->
 
-    <component :is="showDarkModals ? ModalDark : Modal" v-model="showModal" title="My new Title (via props)">
+    <component :is="showDarkModals ? ModalDark : Modal" v-model="showModal" title="My new Title (via props)" :userData="userData">
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
         optio, dolores laudantium quidem in aliquid itaque earum nostrum, ipsa
@@ -32,6 +32,11 @@
 import { ref } from "vue";
 import Modal from "@/components/Modal.vue";
 import ModalDark from "@/components/ModalDark.vue";
+
+//props
+const props = defineProps({
+  userData: { type: Object }
+});
 
 // modals
 const showDarkModals = ref(false);
