@@ -45,7 +45,8 @@ export default {
 import { ref, onMounted } from 'vue'
 // import vAutofocus
 import { vAutofocus } from '@/directives/vAutofocus'
-import { useCounter } from "@/use/useCounter";
+// import { useCounter } from "@/use/useCounter";
+import { useCounterStore } from '@/stores/counter'
 
 /* app title */
 // non reactive data 
@@ -58,8 +59,8 @@ onMounted(() => {
 })
 
 /* counter */
-const { counterData, oddOrEven, increaseCounter, decreaseCounter } = useCounter()
-
+// const { counterData, oddOrEven, increaseCounter, decreaseCounter } = useCounter()
+const counter = useCounterStore()
 
 // life cycle hooks
 /* onBeforeMount(() => {
@@ -148,28 +149,30 @@ export default {
     <!-- counter title using ref -->
     <!-- <h3>{{ counterTitle }} :</h3> -->
     <!-- counter title using reactive -->
-    <h3>{{ counterData.title }} :</h3>
+    <!-- <h3>{{ counterData.title }} :</h3> -->
+    <h3>{{ counter.title }}:</h3>
 
     <div>
-      <button @click="decreaseCounter(2)" class="btn">--</button>
-      <button @click="decreaseCounter(1)" class="btn">-</button>
+      <button class="btn">--</button>
+      <button class="btn">-</button>
       <!-- counter data using ref -->
       <!-- <span class="counter">{{ counter }}</span> -->
 
       <!-- counter data using reactive -->
-      <span class="counter">{{ counterData.count }}</span>
+      <span class="counter">{{ counter.count }}</span>
       <!-- <button @click="increaseCounter" class="btn">+</button> -->
       <!-- <button @click="increaseCounter(1)" class="btn">+</button> -->
-      <button @click="increaseCounter(1, $event)" class="btn">+</button>
-      <button @click="increaseCounter(2)" class="btn">++</button>
+      <button class="btn">+</button>
+      <button class="btn">++</button>
     </div>
 
-    <p>This counter is {{ oddOrEven }}</p>
+    <p>This counter is odd/even</p>
 
     <div class="edit">
       <h4>Edit counter title:</h4>
       <!-- <input v-model="counterTitle" type="text"> -->
-      <input v-model="counterData.title" type="text" v-autofocus>
+      <!-- <input type="text" v-autofocus> -->
+      <input v-model="counter.title" type="text" v-autofocus>
     </div>
   </div>
 </template>
