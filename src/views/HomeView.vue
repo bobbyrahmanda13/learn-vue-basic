@@ -53,9 +53,9 @@ import { useCounterStore } from '@/stores/counter'
 const appTitle = 'My Amazing Counter App'
 const appTitleRef = ref(null)
 onMounted(() => {
-	// console.log(appTitleRef.value)
-	// console.log('Do stuff related to Counter')
-	console.log(`The App title is ${appTitleRef.value.offsetWidth}px wide!"`)
+  // console.log(appTitleRef.value)
+  // console.log('Do stuff related to Counter')
+  console.log(`The App title is ${appTitleRef.value.offsetWidth}px wide!"`)
 })
 
 /* counter */
@@ -64,41 +64,41 @@ const counter = useCounterStore()
 
 // life cycle hooks
 /* onBeforeMount(() => {
-	console.log('onBeforeMount')
+  console.log('onBeforeMount')
 })
 onMounted(() => {
-	console.log('onMounted')
+  console.log('onMounted')
 })
 onBeforeUnmount(() => {
-	console.log('onBeforeUnmount')
+  console.log('onBeforeUnmount')
 })
 onUnmounted(() => {
-	console.log('onUnmounted')
+  console.log('onUnmounted')
 })
 
 // Activated Hooks
 onActivated(() => {
-	console.log('onActivated')
+  console.log('onActivated')
 })
 onDeactivated(() => {
-	console.log('onDeactivated')
+  console.log('onDeactivated')
 }) */
 
 // Update Hooks
 /* onBeforeUpdate(() => {
-	console.log('onBeforeUpdate')
+  console.log('onBeforeUpdate')
 })
 onUpdated(() => {
-	console.log('onUpdated')
+  console.log('onUpdated')
 }) */
 
 /* local directives start */
 
 /* const vAutofocus = {
-	mounted: (el) => {
-		el.focus()
-		// console.log('test mounted')
-	}
+  mounted: (el) => {
+    el.focus()
+    // console.log('test mounted')
+  }
 }// v-autofocus */
 
 /* Local directives end */
@@ -142,56 +142,56 @@ export default {
 </script> -->
 
 <template>
-	<div class="home">
-		<!-- <h2>{{ appTitle }}</h2> -->
-		<h2 ref="appTitleRef">{{ appTitle }}</h2>
+  <div class="home">
+    <!-- <h2>{{ appTitle }}</h2> -->
+    <h2 ref="appTitleRef">{{ appTitle }}</h2>
 
-		<!-- counter title using ref -->
-		<!-- <h3>{{ counterTitle }} :</h3> -->
-		<!-- counter title using reactive -->
-		<!-- <h3>{{ counterData.title }} :</h3> -->
-		<h3>{{ counter.title }}:</h3>
+    <!-- counter title using ref -->
+    <!-- <h3>{{ counterTitle }} :</h3> -->
+    <!-- counter title using reactive -->
+    <!-- <h3>{{ counterData.title }} :</h3> -->
+    <h3>{{ counter.title }}:</h3>
 
-		<div>
-			<button class="btn">--</button>
-			<button class="btn">-</button>
-			<!-- counter data using ref -->
-			<!-- <span class="counter">{{ counter }}</span> -->
+    <div>
+      <button @click="counter.decreaseCounter(2)" class="btn">--</button>
+      <button @click="counter.decreaseCounter(1)" class="btn">-</button>
+      <!-- counter data using ref -->
+      <!-- <span class="counter">{{ counter }}</span> -->
 
-			<!-- counter data using reactive -->
-			<span class="counter">{{ counter.count }}</span>
-			<!-- <button @click="increaseCounter" class="btn">+</button> -->
-			<!-- <button @click="increaseCounter(1)" class="btn">+</button> -->
-			<button class="btn">+</button>
-			<button class="btn">++</button>
-		</div>
+      <!-- counter data using reactive -->
+      <span class="counter">{{ counter.count }}</span>
+      <!-- <button @click="increaseCounter" class="btn">+</button> -->
+      <!-- <button @click="increaseCounter(1)" class="btn">+</button> -->
+      <button @click="counter.increaseCounter(1)" class="btn">+</button>
+      <button @click="counter.increaseCounter(2)" class="btn">++</button>
+    </div>
 
-		<p>This counter is odd/even</p>
+    <p>This counter is odd/even</p>
 
-		<div class="edit">
-			<h4>Edit counter title:</h4>
-			<!-- <input v-model="counterTitle" type="text"> -->
-			<!-- <input type="text" v-autofocus> -->
-			<input v-model="counter.title" type="text" v-autofocus>
-		</div>
-	</div>
+    <div class="edit">
+      <h4>Edit counter title:</h4>
+      <!-- <input v-model="counterTitle" type="text"> -->
+      <!-- <input type="text" v-autofocus> -->
+      <input v-model="counter.title" type="text" v-autofocus>
+    </div>
+  </div>
 </template>
 
 
   <style>
   .home {
-  	text-align: center;
-  	padding: 20px;
+    text-align: center;
+    padding: 20px;
   }
   
   .btn,
   .counter {
-  	font-size: 40px;
-  	margin: 10px;
+    font-size: 40px;
+    margin: 10px;
   }
   
   .edit {
-  	margin-top: 60px;
+    margin-top: 60px;
   }
   </style>
 
